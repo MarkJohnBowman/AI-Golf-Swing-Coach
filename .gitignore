@@ -1,0 +1,34 @@
+# Secrets – never upload these
+.env
+
+# Python
+__pycache__/
+.venv/
+venv/
+.pytest_cache/
+
+# Node / React
+node_modules/
+dist/
+build/
+
+# C# / .NET
+bin/
+obj/
+.vs/
+
+# Machine learning (too big for GitHub)
+datasets/
+runs/
+*.pt
+
+# Recordings and videos
+recordings/
+*.mp4
+*.mov
+
+# System files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
