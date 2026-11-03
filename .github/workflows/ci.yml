@@ -1,0 +1,136 @@
+# CI pipeline – runs on every push and pull request to main.
+# Each part of the project is only tested once it has code in it,
+# so the pipeline passes now and switches on as each part is built.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # 1. Work out which parts of the project have code yet
+  check:
+    name: Check project parts
+    runs-on: ubuntu-latest
+    outputs:
+      backend: ${{ steps.parts.outputs.backend }}
+      web: ${{ steps.parts.outputs.web }}
+      phone: ${{ steps.parts.outputs.phone }}
+      kinect: ${{ steps.parts.outputs.kinect }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Look for code in each folder
+        id: parts
+        run: |
+          [ -f backend/pyproject.toml ] && echo "backend=true" >> "$GITHUB_OUTPUT" || echo "backend=false" >> "$GITHUB_OUTPUT"
+          [ -f web/package.json ] && echo "web=true" >> "$GITHUB_OUTPUT" || echo "web=false" >> "$GITHUB_OUTPUT"
+          [ -f capture/phone/package.json ] && echo "phone=true" >> "$GITHUB_OUTPUT" || echo "phone=false" >> "$GITHUB_OUTPUT"
+          ls capture/kinect/*.sln >/dev/null 2>&1 && echo "kinect=true" >> "$GITHUB_OUTPUT" || echo "kinect=false" >> "$GITHUB_OUTPUT"
+          cat "$GITHUB_OUTPUT"
+
+  # 2. Check the documentation is formatted correctly
+  docs:
+    name: Docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: '**/*.md'
+
+  # 3. Backend (Python / FastAPI) – lint and tests
+  backend:
+    name: Backend
+    needs: check
+    if: needs.check.outputs.backend == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -e ".[dev]"
+      - name: Lint
+        run: ruff check .
+      - name: Tests
+        run: pytest --cov=app
+
+  # 4. Web app (React) – lint, tests and build
+  web:
+    name: Web app
+    needs: check
+    if: needs.check.outputs.web == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+
+  # 5. Phone app (React Native) – lint and tests
+  phone:
+    name: Phone app
+    needs: check
+    if: needs.check.outputs.phone == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: capture/phone
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+
+  # 6. Kinect app (C#) – build and tests on Windows
+  # The Kinect SDK can't be installed on GitHub's servers, so only the
+  # core part of the app (without the Kinect hardware code) is tested here.
+  kinect:
+    name: Kinect app
+    needs: check
+    if: needs.check.outputs.kinect == 'true'
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: capture/kinect
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - run: dotnet build
+      - run: dotnet test
+
+  # 7. One final check that passes only if everything above passed
+  ci-status:
+    name: CI status
+    needs: [check, docs, backend, web, phone, kinect]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check all jobs passed
+        run: |
+          if [[ "${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}" == "true" ]]; then
+            echo "A job failed"
+            exit 1
+          fi
+          echo "All jobs passed or were skipped"
