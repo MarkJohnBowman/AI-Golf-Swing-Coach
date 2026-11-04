@@ -27,7 +27,7 @@ To investigate whether a Kinect camera, a slow-motion phone camera and an AI coa
 
 ## Milestones
 
-- **M0 – Planning and setup** (3 – 9 Nov 2026): GitHub repo, documentation, CI/CD pipeline
+- **M0 - Planning and setup** (3 - 9 Nov 2026): GitHub repo, documentation, CI pipeline
 - **M1 – Kinect capture and backend** (10 – 29 Nov 2026): Kinect body tracking sent to the backend
 - **M2 – Phone capture and syncing** (30 Nov – 20 Dec 2026): phone records automatically and both recordings are lined up
 - **M3 – Club detection model** (21 Dec 2026 – 31 Jan 2027): club head images labelled and YOLO model trained
@@ -49,10 +49,13 @@ To investigate whether a Kinect camera, a slow-motion phone camera and an AI coa
 ## How Progress Is Tracked
 
 - Each task is a GitHub issue, linked to a milestone.
-- Tasks move across a GitHub Project board: To do, In progress, Done.
+- Tasks move across a GitHub Project board: Backlog, In progress, Done.
 - Supervisor meetings are recorded in `docs/meetings`.
 - Research is kept in a handwritten notebook and summarised in `docs/research`.
 
 ## Changes to the Plan
 
 - **3 Nov 2026** – Plan created from the approved project proposal.
+
+- **4 Nov 2026** - CD pipeline moved to later in the project, as there is nothing to deploy until the backend and web app exist.
+
