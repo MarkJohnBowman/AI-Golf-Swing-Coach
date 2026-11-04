@@ -58,4 +58,3 @@ To investigate whether a Kinect camera, a slow-motion phone camera and an AI coa
 - **3 Nov 2026** – Plan created from the approved project proposal.
 
 - **4 Nov 2026** - CD pipeline moved to later in the project, as there is nothing to deploy until the backend and web app exist.
-
