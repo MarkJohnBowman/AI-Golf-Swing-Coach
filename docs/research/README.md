@@ -109,7 +109,7 @@ The first screen sketches were a live screen (live skeleton, live cues, focus an
 
 ## Final Design - 20 October 2026
 
-**AI Swing Coach: Multi-Sensor Golf Swing Analysis with LLM Coaching Feedback**
+Project title: AI Swing Coach: Multi-Sensor Golf Swing Analysis with LLM Coaching Feedback
 
 The project combines:
 
