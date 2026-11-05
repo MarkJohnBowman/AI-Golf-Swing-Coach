@@ -78,4 +78,4 @@ plan as they change often.
 
 ### Next Steps
 
-- Epic 2: Kinect capture this week.
+- Epic 2: Phone capture this week.
