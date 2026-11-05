@@ -27,15 +27,15 @@ To investigate whether a Kinect camera, a slow-motion phone camera and an AI coa
 
 ## Milestones
 
-- **M0 - Planning and setup** (3 - 9 Nov 2026): GitHub repo, documentation, CI pipeline
-- **M1 – Kinect capture and backend** (10 – 29 Nov 2026): Kinect body tracking sent to the backend
-- **M2 – Phone capture and syncing** (30 Nov – 20 Dec 2026): phone records automatically and both recordings are lined up
-- **M3 – Club detection model** (21 Dec 2026 – 31 Jan 2027): club head images labelled and YOLO model trained
-- **M4 – Swing analysis** (1 – 21 Feb 2027): swing stages, measurements and fault detection
-- **M5 – Web app and database** (22 Feb – 14 Mar 2027): results screens and saved sessions
-- **M6 – AI coaching** (1 – 28 Mar 2027): drill library and AI feedback
-- **M7 – Testing and evaluation** (29 Mar – 18 Apr 2027): accuracy testing and user feedback
-- **M8 – Dissertation and submission** (Feb – May 2027): write-up, demo video and final submission
+- **M0 - Planning and setup**  GitHub repo, documentation, CI pipeline
+- **M1 - Kinect capture** -  Kinect body tracking working
+- **M2 - Phone capture, backend and syncing** phone records automatically, backend receives both recordings and they are lined up
+- **M3 – Club detection model** club head images labelled and YOLO model trained
+- **M4 – Swing analysis** swing stages, measurements and fault detection
+- **M5 – Web app and database** results screens and saved sessions
+- **M6 – AI coaching** drill library and AI feedback
+- **M7 – Testing and evaluation** accuracy testing and user feedback
+- **M8 – Dissertation and submission** write-up, demo video and final submission
 
 ## Risks
 
@@ -58,3 +58,5 @@ To investigate whether a Kinect camera, a slow-motion phone camera and an AI coa
 - **3 Nov 2026** – Plan created from the approved project proposal.
 
 - **4 Nov 2026** - CD pipeline moved to later in the project, as there is nothing to deploy until the backend and web app exist.
+
+- **4 Nov 2026** - Dates removed from the milestones in this plan, as they change week to week. Due dates are kept on the GitHub milestones instead.
