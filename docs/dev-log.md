@@ -64,7 +64,7 @@ Before any setup work started, the project idea went through a few stages:
 - Turned on branch protection
 - Added the meeting notes, research summary, requirements and architecture documents.
 - Closed Epic 1.
-- Changed M1 to Kinect capture 
+- Changed M1 to Kinect capture
 - Removed dates from the milestones in project
 plan as they change often.
 - Moved the CD pipeline to later in the project as it is not needed yet.
