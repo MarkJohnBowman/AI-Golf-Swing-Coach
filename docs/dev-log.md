@@ -55,3 +55,27 @@ Before any setup work started, the project idea went through a few stages:
 - Add notes from the supervisor meetings and a summary of the research.
 - Set up the CD pipeline for releases.
 - Create labels, milestones, issues and a Project board on GitHub.
+
+
+## 4- 5 November 2026 - Planning, Docs and Weekly Epics
+
+### What Was Done
+
+- Met Damien and showed the repository, CI pipeline, epics and project board.
+- Turned on branch protection
+- Added the meeting notes, research summary, requirements and architecture documents.
+- Closed Epic 1.
+- Changed M1 to Kinect capture 
+- Removed dates from the milestones in project plan as they change often.
+- Moved the CD pipeline to later in the project as it is not needed yet.
+- Started Epic 2: Camera Capture (Kinect)
+
+### Problems and How They Were Fixed
+
+- **Missing comma** in the markdownlint settings file broke the docs check. Fixed by correcting the file.
+- **Bold line used as a heading** in the research summary failed the docs check. Fixed by changing it to plain text.
+- **GitHub Actions outage** on 4 Nov delayed the checks. The pull requests were left open until the checks passed, instead of bypassing them.
+
+### Next Steps
+
+- Epic 2: Kinect capture this week.

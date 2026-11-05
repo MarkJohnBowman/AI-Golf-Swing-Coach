@@ -45,7 +45,7 @@ This project aims to build an AI golf swing coach. A Kinect camera tracks the go
 
 ## Project Status
 
-The project is currently in the planning and setup stage. The timeline below is a working plan and may change as the project goes on.
+The project is run as one small epic per week, with a weekly supervisor meeting. Current work is on the GitHub project board.
 
 - **November 2026** – Setup, Kinect capture and backend
 - **December 2026** – Phone capture and syncing the two cameras
