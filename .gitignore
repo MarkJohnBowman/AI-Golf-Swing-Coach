@@ -27,6 +27,7 @@ runs/
 
 # Recordings and videos
 recordings/
+uploads/
 *.mp4
 *.mov
 
