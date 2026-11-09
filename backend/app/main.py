@@ -6,7 +6,8 @@ from fastapi.responses import FileResponse, HTMLResponse
 
 app = FastAPI(title="AI Golf Swing Coach")
 
-UPLOAD_DIR = Path("uploads")
+# Folder where swing videos are saved no matter where the server is started from
+UPLOAD_DIR = Path(__file__).resolve().parent.parent / "uploads"
 
 ALLOWED_EXTENSIONS = {".mp4", ".mov"}
 
