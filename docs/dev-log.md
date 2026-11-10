@@ -79,3 +79,53 @@ plan as they change often.
 ### Next Steps
 
 - Epic 2: Phone capture this week.
+
+## 5 November 2026
+
+### What I did
+
+- Tried to connect the Kinect. It was plugged into the HDMI port, but it needs the Kinect Adapter for Windows to work on a PC. I didn't have one, so I started the phone epic (Epic 3) first. Damien said either camera was fine for this week.
+- 3.1 - Recorded test swings on my phone in normal and slow motion. The club is blurry in both, but less blurry in slow motion. I added screenshots to the research doc.
+- 3.2 - Set up the backend with FastAPI. Added a health check and a test. The backend job in CI ran for the first time.
+
+### Problems
+
+- The push failed because GitHub was down. I waited and pushed again later.
+
+## 7 November 2026
+
+### What I did
+
+- Added the Python build and test files to .gitignore so they don't get committed.
+- 3.3 - Made an upload page for the phone. The phone opens the page in its browser and sends the video to the laptop, which saves it in an uploads folder. Only .mp4 and .mov files are allowed.
+- Wrote tests for the upload. They use a temporary folder so they don't touch the real uploads folder.
+- Uploaded a real slow-motion swing from my phone and it worked.
+
+### Problems
+
+- VS Code tried to open the video as text. Videos have to be opened in a media player.
+
+## 9 November 2026
+
+### What I did
+
+- 3.4 - Added a page on the laptop that lists the uploaded videos and plays the one I click.
+- Numbered all the GitHub issues (1.1, 2.1, 3.1 and so on).
+
+### Problems
+
+- The video list was empty when I tested it. The server was saving videos to a different folder depending on where I started it from. I fixed it so it always uses backend/uploads. The tests didn't catch this because they use a temporary folder, so testing it by hand was important.
+- Ruff failed because my imports weren't in order. ruff check --fix sorted them.
+
+## 10 November 2026
+
+### What I did
+
+- 3.5 - Recorded 5 slow-motion swings from behind at home, uploaded them from my phone and played them back on the laptop.
+- 3.6 - Changed the page to look like the results screen I planned. It has the swing list on the left and two panels. One is for the Kinect skeleton later and the other plays the phone video.
+- Thought about how recording could start on its own later. I'll get it working with saved videos first.
+
+### Next
+
+- Meeting with Damien on 11 November to show the phone capture and the results page.
+- Then Epic 2 (Kinect).
