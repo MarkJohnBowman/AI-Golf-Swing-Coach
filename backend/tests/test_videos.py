@@ -38,7 +38,6 @@ def test_upload_rejects_other_file_types(tmp_path, monkeypatch):
     assert response.status_code == 400
     assert not (tmp_path / "notes.txt").exists()
 
-    
 
 def test_list_videos_returns_uploaded_files(tmp_path, monkeypatch):
     monkeypatch.setattr(main, "UPLOAD_DIR", tmp_path)
