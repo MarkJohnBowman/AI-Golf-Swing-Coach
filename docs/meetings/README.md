@@ -1,4 +1,4 @@
-# Meeting Notes – notes from supervisor meetings.
+# Meeting Notes - notes from supervisor meetings.
 
 ## 15 October 2026 - Project Idea
 
@@ -37,7 +37,7 @@
 - Final paragraph reworded to describe what the project proposes.
 - Proposal submitted.
 
-## 4 November 2026 – Setup Progress
+## 4 November 2026 - Setup Progress
 
 ### Progress Shown
 
@@ -54,3 +54,21 @@
 ### Agreed Goal
 
 - Camera capture working for next week's meeting. Either camera was acceptable, so the Kinect was chosen first.
+
+## 11 November 2026 - Phone Capture Progress
+
+### Progress Shown
+
+- FastAPI backend running on the laptop with Uvicorn.
+- Swing videos uploaded from the phone over Wi-Fi and saved on the laptop.
+- Results page with the swing list and two panels, one for the Kinect skeleton and one for the phone video.
+- Tests and Ruff running in CI.
+- Epics changed around because of the Kinect adapter.
+
+### Feedback
+
+- Damien pointed me to Udemy to look at an OpenCV course that pertained to my project.
+
+### Agreed Goal
+
+- Still waiting on the Kinect adapter, so club tracking with OpenCV this week.
