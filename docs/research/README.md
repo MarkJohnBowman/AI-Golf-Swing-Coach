@@ -241,3 +241,12 @@ Recorded 4 new swings with the phone lower, closer and no hi-vis. Tested CSRT an
 ### Decision
 
 Stop testing OpenCV trackers and try YOLO, which looks for the club head in every frame on its own.
+
+### YOLO Standard Model - 12 November 2026
+
+Ran the standard YOLO model (yolo11n) on IMG_9124.mov.
+
+- **Person** - found me in every frame
+- **Club head** - picked up as a sports ball, a kite on the backswing and a baseball bat for a split second
+
+The standard model can see the club moving, even where the OpenCV trackers lost it, but it doesn't know what a golf club is. A model trained on golf clubs is needed.
