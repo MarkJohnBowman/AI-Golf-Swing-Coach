@@ -204,3 +204,24 @@ Club head is fastest and most blurred at the bottom of the swing, even in slow m
 - [OpenCV legacy trackers](https://docs.opencv.org/5.0/extra_modules/tracking_legacy.html)
 - [Object tracking using OpenCV (LearnOpenCV)](https://learnopencv.com/object-tracking-using-opencv-cpp-python/)
 - [Udemy course](https://www.udemy.com/course/python-for-computer-vision-with-opencv-and-deep-learning/learn/lecture/12505470#content)
+
+
+### Results - 12 November 2026
+
+Tested all six trackers on IMG_9116.mov, club head selected by hand on the first frame.
+
+- **All trackers** - lost the club head during the takeaway or backswing
+- **Best result** - lost it at the start of the takeaway, with the club still near the hands
+- **MedianFlow** - box stayed where it started when the club head moved
+- **CSRT** - locked onto the hi-vis vest once the club passed the hands and stayed there
+
+### Why the Trackers Fail
+
+- Club head moves too far between frames for the tracker to follow
+- Club head is small and blurred, so there's little to match
+- Tracker jumps to the brightest object nearby (hi-vis vest)
+- Start of the video may be normal speed, not slow motion (OpenCV reads 39.8 fps average)
+
+### What This Means
+
+OpenCV trackers can't follow the club head through a swing. This supports using YOLO, which finds the club head in each frame on its own instead of following it from the frame before.
