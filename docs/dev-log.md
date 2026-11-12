@@ -129,3 +129,35 @@ plan as they change often.
 
 - Meeting with Damien on 11 November to show the phone capture and the results page.
 - Then Epic 2 (Kinect).
+
+## 11 November 2026
+
+### What I did
+
+- Met Damien and showed the phone capture and the results page with my uploaded swings.
+- Still waiting on the Kinect adapter, so we agreed I'd work on club tracking with OpenCV this week.
+- Damien told me about a Udemy course on OpenCV to look into.
+
+## 12 November 2026
+
+### What I did
+
+- Made Epic 5 (Club Tracking with OpenCV).
+- Bought a Udemy OpenCV course to use as my main reference. I'm only doing the lessons I need and keeping my code as close to the course as I can.
+- Added notes to the research doc comparing what I'm doing with the course.
+- 5.1 - Read a swing video frame by frame with OpenCV. OpenCV says the video is 39.8 fps with 550 frames, even though the phone records slow motion at 240fps. I think it's giving an average because the video has normal-speed and slow-motion parts.
+- 5.2 - Tested all six OpenCV trackers on the club head. I drew a box around the club head on the first frame and the tracker follows it. Every tracker lost the club during the takeaway or backswing. CSRT jumped to my hi-vis vest and stayed there. I got the same result on a second swing.
+- Decided to record new swings with a better camera setup before trying YOLO.
+
+### Problems
+
+- The course uses an older version of OpenCV. I had to install opencv-contrib-python, and some trackers have moved to cv2.legacy.
+- The video was too big for my screen, so I shrank each frame with cv2.resize.
+- Pressing space for every frame was too slow, so I changed waitKey(0) to waitKey(30) so it plays by itself.
+- Ruff wanted a blank line between import sys and import cv2.
+- The camera was too high in my first videos. Most of the frame is sky and the club head is tiny.
+
+### Next
+
+- 5.7 - Record new swings with the phone at hip height, closer, and no hi-vis.
+- 5.6 - Try a ready-made YOLO model on the new swings.
