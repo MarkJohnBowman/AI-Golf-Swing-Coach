@@ -157,3 +157,50 @@ Pipeline: sync on impact, clean data, swing phases, metrics, rank faults, LLM co
 - **Front end:** React web app - shown on the laptop in front of the golfer
 - **Testing:** pytest, API tests, accuracy benchmarks - QA focus, testing on real swings
 - **DevOps:** GitHub, Docker, GitHub Actions - version control, CI, deployable demo
+
+## Club Tracking With OpenCV - 12 November 2026
+
+Kinect adapter hasn't arrived yet, so this week is club tracking in the phone video using OpenCV.
+
+### Course
+
+Python for Computer Vision with OpenCV and Deep Learning (Udemy). 14 hours long, only the parts needed for the project are used.
+
+- **36 Connecting to Camera / 37 Using Video Files** - reading a video frame by frame
+- **42 Template Matching** - finding a small image inside a bigger one
+- **58 Optical Flow** - following points between frames
+- **MeanShift and CamShift** - tracking an object by its colour
+- **64 Tracking APIs** - OpenCV's built-in trackers
+
+### What the Course Does
+
+- Box drawn by hand around the object on the first frame
+- Tracker follows the object through the video
+- Compares Boosting, MIL, KCF, TLD and MedianFlow
+
+### What Is Different
+
+- **Video** - recorded slow-motion swings instead of a webcam
+- **Playback** - one frame at a time to see where the tracker loses the club
+- **CSRT** - added as a sixth tracker, usually the most accurate
+- **OpenCV version** - the course uses an older version:
+  - opencv-contrib-python needed, the normal package only has MIL
+  - Boosting, TLD and MedianFlow moved to cv2.legacy
+  - tracker name set manually, the course's way no longer works
+
+### Why This Is Only a Test
+
+- The golfer can't draw a box, so this can't be in the final app
+- Used to compare trackers and build the parts that stay: reading the video, saving club positions, drawing the club path
+- YOLO will find the club head automatically later, only that step changes
+
+### Expected Result
+
+Club head is fastest and most blurred at the bottom of the swing, even in slow motion (see Slow-Motion Test). Trackers will likely lose it there, which supports using YOLO.
+
+### References
+
+- OpenCV docs: https://docs.opencv.org/5.0/
+- OpenCV legacy trackers: https://docs.opencv.org/5.0/extra_modules/tracking_legacy.html
+- Object tracking using OpenCV (LearnOpenCV): https://learnopencv.com/object-tracking-using-opencv-cpp-python/
+- Udemy Course: https://www.udemy.com/course/python-for-computer-vision-with-opencv-and-deep-learning/learn/lecture/12505470#content
