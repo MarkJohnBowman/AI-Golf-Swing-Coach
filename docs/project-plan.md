@@ -60,3 +60,5 @@ To investigate whether a Kinect camera, a slow-motion phone camera and an AI coa
 - **4 Nov 2026** - CD pipeline moved to later in the project, as there is nothing to deploy until the backend and web app exist.
 
 - **4 Nov 2026** - Dates removed from the milestones in this plan, as they change week to week. Due dates are kept on the GitHub milestones instead.
+
+- **12 November** - OpenCV trackers couldn't follow the club head, so YOLO was brought forward into Epic 5. Training a custom model stays in a later epic.
