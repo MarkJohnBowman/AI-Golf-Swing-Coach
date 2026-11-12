@@ -200,7 +200,7 @@ Club head is fastest and most blurred at the bottom of the swing, even in slow m
 
 ### References
 
-- OpenCV docs: https://docs.opencv.org/5.0/
-- OpenCV legacy trackers: https://docs.opencv.org/5.0/extra_modules/tracking_legacy.html
-- Object tracking using OpenCV (LearnOpenCV): https://learnopencv.com/object-tracking-using-opencv-cpp-python/
-- Udemy Course: https://www.udemy.com/course/python-for-computer-vision-with-opencv-and-deep-learning/learn/lecture/12505470#content
+- [OpenCV docs](https://docs.opencv.org/5.0/)
+- [OpenCV legacy trackers](https://docs.opencv.org/5.0/extra_modules/tracking_legacy.html)
+- [Object tracking using OpenCV (LearnOpenCV)](https://learnopencv.com/object-tracking-using-opencv-cpp-python/)
+- [Udemy course](https://www.udemy.com/course/python-for-computer-vision-with-opencv-and-deep-learning/learn/lecture/12505470#content)
