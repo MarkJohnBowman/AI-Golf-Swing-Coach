@@ -3,7 +3,7 @@ import sys
 import cv2
 from ultralytics import YOLO
 
-model = YOLO("yolo11n.pt")
+model = YOLO("best.pt")
 
 cap = cv2.VideoCapture(sys.argv[1])
 
@@ -13,7 +13,7 @@ while cap.isOpened():
 
     if ret == True:
 
-        results = model(frame, verbose=False)
+        results = model(frame, conf=0.05, verbose=False)
         frame = results[0].plot()
 
         frame = cv2.resize(frame, (0, 0), fx=0.3, fy=0.3)
