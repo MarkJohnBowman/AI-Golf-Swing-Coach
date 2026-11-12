@@ -205,7 +205,6 @@ Club head is fastest and most blurred at the bottom of the swing, even in slow m
 - [Object tracking using OpenCV (LearnOpenCV)](https://learnopencv.com/object-tracking-using-opencv-cpp-python/)
 - [Udemy course](https://www.udemy.com/course/python-for-computer-vision-with-opencv-and-deep-learning/learn/lecture/12505470#content)
 
-
 ### Results - 12 November 2026
 
 Tested all six trackers on IMG_9116.mov, club head selected by hand on the first frame.
