@@ -250,3 +250,29 @@ Ran the standard YOLO model (yolo11n) on IMG_9124.mov.
 - **Club head** - picked up as a sports ball, a kite on the backswing and a baseball bat for a split second
 
 The standard model can see the club moving, even where the OpenCV trackers lost it, but it doesn't know what a golf club is. A model trained on golf clubs is needed.
+
+### First Trained Model - 12 November 2026
+
+Trained YOLO11n on the club-head-1chrz dataset (Roboflow Universe, CC BY 4.0) on Google Colab with a T4 GPU.
+
+- **Dataset** - 2,628 training, 579 validation, 16 test images, one class (golf-club-head)
+- **Settings** - 50 epochs, image size 640, started from yolo11n
+- **Precision** - 0.98
+- **Recall** - 0.95
+- **mAP50** - 0.98 (target 0.85)
+- **mAP50-95** - 0.56
+
+These scores are on the dataset's own validation images. They need to be tested on my own swings to know how well it really works.
+
+Dataset: [club head (Roboflow Universe)](https://universe.roboflow.com/project-00eed/club-head-1chrz/dataset/6)
+
+### First Model on My Swings - 12 November 2026
+
+Ran best.pt on IMG_9124.mov.
+
+- Much better than the OpenCV trackers
+- Finds the club head at address and the top of the backswing
+- Loses it in the fast parts of the swing, then finds it again
+- Never gets stuck on another object, because it looks for the club head in every frame
+
+Missed frames are in the fastest, most blurred parts. Adding labelled frames from my own swings should help. Small gaps can be filled with interpolation.
