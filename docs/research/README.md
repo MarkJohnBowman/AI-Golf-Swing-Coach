@@ -224,3 +224,20 @@ Tested all six trackers on IMG_9116.mov, club head selected by hand on the first
 ### What This Means
 
 OpenCV trackers can't follow the club head through a swing. This supports using YOLO, which finds the club head in each frame on its own instead of following it from the frame before.
+
+### New Recordings - 12 November 2026
+
+Recorded 4 new swings with the phone lower, closer and no hi-vis. Tested CSRT and TLD on IMG_9124.mov.
+
+- Same result as the old videos
+- Tracker follows the back of the club head, then loses it once the club head turns or reaches the body
+
+### Why the Better Setup Didn't Help
+
+- Club head rotates during the swing, so it doesn't look the same from frame to frame
+- Club head goes behind and in front of the body
+- OpenCV trackers need the object to look the same in each frame, so a better camera setup can't fix this
+
+### Decision
+
+Stop testing OpenCV trackers and try YOLO, which looks for the club head in every frame on its own.
