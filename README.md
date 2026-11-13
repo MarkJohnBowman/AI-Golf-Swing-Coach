@@ -1,6 +1,6 @@
 # AI Golf Swing Coach
 
-Final Year Project – B.Sc. (Hons) in Software Development, ATU Galway
+Final Year Project - B.Sc. (Hons) in Software Development, ATU Galway
 
 - **Student:** Mark Bowman (G00389705)
 - **Supervisor:** Damien Costello
@@ -23,25 +23,25 @@ This project aims to build an AI golf swing coach. A Kinect camera tracks the go
 
 ## Technologies
 
-- **Kinect v2** – tracks the golfer's body in 3D
-- **Phone camera (240fps)** – records the club in slow motion
-- **YOLO** – detects the club head in each video frame
-- **Python and FastAPI** – the backend that runs the analysis
-- **LLM with RAG** – AI coaching feedback using a library of drills
-- **MySQL and ChromaDB** – stores sessions and the drill library
-- **React** – the web app shown on the laptop
-- **Docker and GitHub Actions** – packaging, testing and deployment
+- **Kinect v2** - tracks the golfer's body in 3D
+- **Phone camera (240fps)** - records the club in slow motion
+- **YOLO** - detects the club head in each video frame
+- **Python and FastAPI** - the backend that runs the analysis
+- **LLM with RAG** - AI coaching feedback using a library of drills
+- **MySQL and ChromaDB** - stores sessions and the drill library
+- **React** - the web app shown on the laptop
+- **Docker and GitHub Actions** - packaging, testing and deployment
 
 ## Project Structure
 
-- `backend/` – analysis and AI coaching
-- `web/` – the web app
-- `capture/kinect/` – Kinect capture app
-- `capture/phone/` – phone capture app
-- `ml/` – training the club detection model
-- `drills/` – the drill library
-- `deploy/` – Docker setup
-- `docs/` – project plan, research and meeting notes
+- `backend/` - analysis and AI coaching
+- `web/` - the web app
+- `capture/kinect/` - Kinect capture app
+- `capture/phone/` - phone capture app
+- `ml/` - training the club detection model
+- `drills/` - the drill library
+- `deploy/` - Docker setup
+- `docs/` - project plan, research and meeting notes
 
 ## Project Status
 
