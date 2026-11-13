@@ -24,7 +24,7 @@ obj/
 datasets/
 runs/
 *.pt
-club_positions.csv
+club_positions*.csv
 
 # Recordings and videos
 recordings/
