@@ -276,3 +276,13 @@ Ran best.pt on IMG_9124.mov.
 - Never gets stuck on another object, because it looks for the club head in every frame
 
 Missed frames are in the fastest, most blurred parts. Adding labelled frames from my own swings should help. Small gaps can be filled with interpolation.
+
+### Saved Club Positions - 13 November 2026
+
+Saved the club head position for every frame of IMG_9124.mov (conf 0.1).
+
+- **All frames** - found in 436 of 536 (81%)
+- **During the swing (frames 174 to 398)** - found in about two thirds
+- **Biggest gaps** - 206 to 223 (fast part of the backswing), 344 to 367 (follow-through), 390 to 398
+
+Short gaps of 1 to 5 frames can be filled with interpolation. The long gaps are too big, because a straight line would cut across the swing arc. Frames from these gaps should be labelled for the next model.
