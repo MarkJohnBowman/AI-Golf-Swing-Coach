@@ -173,8 +173,32 @@ plan as they change often.
 - 5.3 - Saved the club head position for every frame of a swing to a CSV file. YOLO found it in 436 of 536 frames (81%), but only about two thirds during the actual swing.
 - Found the biggest gaps: the fast part of the backswing (18 frames), the follow-through and coming into the finish.
 - Looked into whether greyscale or edge detection would help. Decided they wouldn't, because the model was trained on colour images and the blur removes the edges anyway.
+- 5.4 - Filled gaps of 5 frames or fewer with interpolation, which is a straight line between the points either side. Longer gaps are left empty so no wrong lines get drawn. 44 frames were filled and 56 were still missing.
+- Drew the club path over the video and saved it as a new video. The downswing, impact and follow-through were drawn well, but the first half of the backswing was missing.
+- Closed Epic 5 and planned Epic 6 to train the model on my own swings.
+
+### Problems
+
+- The filled positions file showed up in Git. Changed .gitignore to ignore all the club positions files.
+
+## 14 November 2026
+
+### What I did
+
+- Made Epic 6 (Train the Club Head Model on My Own Swings).
+- 6.1 - Saved every frame from three of my new swings as pictures, then deleted the frames where the club wasn't moving.
+- 6.2 - Labelled the club head in Roboflow for two swings (IMG_9120 and IMG_9121), 416 frames. Kept IMG_9123 and IMG_9124 for testing.
+- 6.3 and 6.4 - Added my frames to the Universe training images and trained YOLO11n again on Colab with the same settings. The scores were the same as the first model, because they are measured on the Universe images.
+- 6.5 - Ran the new model on IMG_9124, which neither model had seen. It found the club head in 519 of 536 frames (97%), up from 436 (81%). After filling gaps only 8 frames are missing, down from 56. The club path now covers the whole swing, including the backswing.
+
+### Problems
+
+- Roboflow showed the frames in upload order, not swing order, which made labelling slower.
+- Clicking Add to Dataset in the labelling screen only added the one frame I had open. I had to add the rest from the Annotated tab.
+- The two swings ended up with two different class names in Roboflow. Fixed it in Colab by setting every label to class 0.
+- In 24 frames of the first swing the club head couldn't be seen at all, so they weren't labelled.
 
 ### Next
 
-- 5.4 - Fill the short gaps with interpolation and draw the club path. Long gaps are too big to fill with a straight line.
-- Label frames from my own swings, especially the blurry ones, and train a better model.
+- Test the model on swings from a different day and place.
+- Show Damien the club path at the next meeting.

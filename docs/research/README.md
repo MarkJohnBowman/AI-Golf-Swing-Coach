@@ -286,3 +286,41 @@ Saved the club head position for every frame of IMG_9124.mov (conf 0.1).
 - **Biggest gaps** - 206 to 223 (fast part of the backswing), 344 to 367 (follow-through), 390 to 398
 
 Short gaps of 1 to 5 frames can be filled with interpolation. The long gaps are too big, because a straight line would cut across the swing arc. Frames from these gaps should be labelled for the next model.
+
+### First Club Path - 13 November 2026
+
+Filled the short gaps in the saved positions and drew the club path over IMG_9124.mov.
+
+- **Interpolation** - gaps of 5 frames or fewer filled with a straight line between the points either side
+- **Longer gaps** - left empty, so no wrong lines are drawn
+- **Result** - 44 frames filled, 56 still missing
+- **Path** - downswing, impact, follow-through and finish drawn well, first half of the backswing missing
+
+Greyscale and edge detection were considered to fix the gaps. Neither would help, because the model was trained on colour images and the blur removes the edges.
+
+### Training on My Own Swings - 14 November 2026
+
+Labelled the club head in frames from two of my swings in Roboflow and added them to the training images.
+
+- **IMG_9120** - frames 195 to 436, 217 of 241 labelled. In the other 24 the club head couldn't be seen
+- **IMG_9121** - frames 142 to 363, 199 of 222 labelled
+- **IMG_9123 and IMG_9124** - not labelled, kept for testing
+- **Training images** - 3,044 (2,628 from Universe and 416 of mine)
+- **Settings** - same as the first model (50 epochs, image size 640, started from yolo11n)
+- **Precision** - 0.98
+- **Recall** - 0.95
+- **mAP50** - 0.98
+- **mAP50-95** - 0.55
+
+The scores are the same as the first model because they are measured on the Universe validation images. The real test is running both models on a swing neither has seen.
+
+### Comparing the Two Models - 14 November 2026
+
+Ran both models on IMG_9124.mov, a swing neither model was trained on (conf 0.1).
+
+- **First model (Universe images only)** - club head found in 436 of 536 frames (81%), 56 still missing after filling gaps
+- **Second model (with my own frames)** - club head found in 519 of 536 frames (97%), 8 still missing after filling gaps
+
+Adding frames from my own swings fixed most of the gaps, including the first half of the backswing. The club path is now drawn through the whole swing.
+
+IMG_9124 was recorded in the same place and on the same day as the training swings, so this is an easy test. The model still needs to be tested on swings from a different day and place.
