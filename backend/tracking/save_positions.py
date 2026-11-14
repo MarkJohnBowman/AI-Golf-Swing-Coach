@@ -4,7 +4,7 @@ import sys
 import cv2
 from ultralytics import YOLO
 
-model = YOLO("best.pt")
+model = YOLO("best_v2.pt")
 
 cap = cv2.VideoCapture(sys.argv[1])
 
