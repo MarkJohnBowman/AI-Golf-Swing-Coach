@@ -207,7 +207,7 @@ plan as they change often.
 
 ### What I did
 
-- Still waiting on the Kinect adapter. 
+- Still waiting on the Kinect adapter.
 - Added Epic 7 to the changes in the project plan.
 - 7.1 - Moved the gap filling from my fill_gaps.py script into the backend as a function, and wrote tests for it. They check a short gap gets filled, a long gap and a gap at the start are left empty, and the original list isn't changed.
 - 7.1 - Added find_club_path to the backend. It's my save_positions.py script as a function. It runs the model on every frame, fills the short gaps and saves the time of each frame.
