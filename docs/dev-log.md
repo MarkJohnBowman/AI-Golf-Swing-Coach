@@ -202,3 +202,21 @@ plan as they change often.
 
 - Test the model on swings from a different day and place.
 - Show Damien the club path at the next meeting.
+
+## 20 November 2026
+
+### What I did
+
+- Still waiting on the Kinect adapter.
+- Added Epic 7 to the changes in the project plan.
+- 7.1 - Moved the gap filling from my fill_gaps.py script into the backend as a function, and wrote tests for it. They check a short gap gets filled, a long gap and a gap at the start are left empty, and the original list isn't changed.
+- 7.1 - Added find_club_path to the backend. It's my save_positions.py script as a function. It runs the model on every frame, fills the short gaps and saves the time of each frame.
+- Tested it by hand on IMG_9124. The frames weren't evenly spaced in time (0.0, 0.012, 0.028 seconds), which shows why the time of each frame needs to be saved.
+
+### Problems
+
+- Put the YOLO and OpenCV imports inside the function, because CI doesn't install YOLO and the tests would fail if they were at the top of the file.
+
+### Next
+
+- 7.2 - Find the club path automatically after a swing is uploaded, and add an endpoint to get it.
