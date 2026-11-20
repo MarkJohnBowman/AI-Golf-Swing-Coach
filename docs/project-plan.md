@@ -61,4 +61,8 @@ To investigate whether a Kinect camera, a slow-motion phone camera and an AI coa
 
 - **4 Nov 2026** - Dates removed from the milestones in this plan, as they change week to week. Due dates are kept on the GitHub milestones instead.
 
-- **12 November** - OpenCV trackers couldn't follow the club head, so YOLO was brought forward into Epic 5. Training a custom model stays in a later epic.
+- **12 Nov 2026** - OpenCV trackers couldn't follow the club head, so YOLO was brought forward into Epic 5.
+
+- **13 Nov 2026** - Added Epic 6 to train the club head model on my own swings, because the first model missed the fast part of the backswing.
+
+- **20 Nov 2026** - Added Epic 7 to show the club path in the web app for the December showcase, while waiting for the Kinect adapter.
