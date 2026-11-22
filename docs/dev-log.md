@@ -220,3 +220,17 @@ plan as they change often.
 ### Next
 
 - 7.2 - Find the club path automatically after a swing is uploaded, and add an endpoint to get it.
+
+## 22 November 2026
+
+### What I did
+
+- 7.2 - After a swing is uploaded, the backend now finds the club path in the background and saves it next to the video as a JSON file. The phone gets its response straight away and doesn't have to wait.
+- Added an endpoint, /api/videos/{filename}/path, so the results page can get the club path for a swing.
+- If the model file isn't there, like in CI, it skips finding the path, so the upload tests still pass.
+- Wrote tests for the new endpoint and for uploading without the model.
+- Tested it by finding the path for IMG_9124 and opening the endpoint in the browser. It showed the list of points with the time, x and y of each.
+
+### Next
+
+- 7.3 - Draw the club path over the video on the results page.

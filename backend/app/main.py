@@ -1,8 +1,11 @@
+import json
 import shutil
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, UploadFile
+from fastapi import BackgroundTasks, FastAPI, HTTPException, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse
+
+from app.club_path import MODEL_PATH, find_club_path
 
 app = FastAPI(title="AI Golf Swing Coach")
 
@@ -10,6 +13,16 @@ app = FastAPI(title="AI Golf Swing Coach")
 UPLOAD_DIR = Path(__file__).resolve().parent.parent / "uploads"
 
 ALLOWED_EXTENSIONS = {".mp4", ".mov"}
+
+def save_club_path(video_path: Path) -> None:
+    """Find the club path for a swing video and save it next to the video."""
+    # The model isn't on GitHub, so skip this when it isn't there (like in CI)
+    if not MODEL_PATH.exists():
+        return
+
+    path = find_club_path(video_path)
+    json_path = video_path.with_suffix(".json")
+    json_path.write_text(json.dumps(path))
 
 
 # When a GET request is sent to /api/health, run the function below
@@ -41,7 +54,7 @@ def upload_page() -> str:
 
 
 @app.post("/api/videos")
-def upload_video(file: UploadFile) -> dict[str, str]:
+def upload_video(file: UploadFile, background_tasks: BackgroundTasks) -> dict[str, str]:
     """Save an uploaded swing video to the uploads folder."""
     # Only keep the file name, so a name like "../../file" can't save outside the folder
     filename = Path(file.filename or "").name
@@ -52,6 +65,9 @@ def upload_video(file: UploadFile) -> dict[str, str]:
     save_path = UPLOAD_DIR / filename
     with save_path.open("wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
+
+    # Find the club path after the response is sent, so the phone doesn't wait
+    background_tasks.add_task(save_club_path, save_path)
 
     return {"filename": filename, "status": "uploaded"}
 
@@ -73,6 +89,14 @@ def get_video(filename: str) -> FileResponse:
     if not path.is_file():
         raise HTTPException(status_code=404, detail="Video not found")
     return FileResponse(path)
+
+@app.get("/api/videos/{filename}/path")
+def get_club_path(filename: str) -> list[dict]:
+    """Send the club path for one swing, once it has been found."""
+    json_path = (UPLOAD_DIR / Path(filename).name).with_suffix(".json")
+    if not json_path.is_file():
+        raise HTTPException(status_code=404, detail="Club path not ready yet")
+    return json.loads(json_path.read_text())
 
 
 @app.get("/", response_class=HTMLResponse)
