@@ -14,6 +14,7 @@ UPLOAD_DIR = Path(__file__).resolve().parent.parent / "uploads"
 
 ALLOWED_EXTENSIONS = {".mp4", ".mov"}
 
+
 def save_club_path(video_path: Path) -> None:
     """Find the club path for a swing video and save it next to the video."""
     # The model isn't on GitHub, so skip this when it isn't there (like in CI)
@@ -89,6 +90,7 @@ def get_video(filename: str) -> FileResponse:
     if not path.is_file():
         raise HTTPException(status_code=404, detail="Video not found")
     return FileResponse(path)
+
 
 @app.get("/api/videos/{filename}/path")
 def get_club_path(filename: str) -> list[dict]:
@@ -188,8 +190,6 @@ def videos_page() -> str:
             border-radius: 8px;
           }
           video {
-            width: 100%;
-            height: 100%;
             border-radius: 8px;
           }
           .placeholder {
@@ -197,6 +197,12 @@ def videos_page() -> str:
             text-align: center;
             padding: 0 20px;
           }
+          .video-wrap {
+            position: relative;
+            height: 100%;
+          }
+          #player { height: 100%; display: block; }
+          #path-canvas { position: absolute; top: 0; left: 0; pointer-events: none; }
         </style>
       </head>
       <body>
@@ -220,19 +226,28 @@ def videos_page() -> str:
             <div class="panel">
               <h2>Down-the-line - Phone video</h2>
               <div class="panel-body">
-                <video id="player" controls></video>
+                <div class="video-wrap">
+                  <video id="player" controls></video>
+                  <canvas id="path-canvas"></canvas>
+                </div>
               </div>
+              <p id="path-status"></p>
             </div>
           </section>
         </main>
 
         <script>
+          const player = document.getElementById("player");
+          const canvas = document.getElementById("path-canvas");
+          const pathStatus = document.getElementById("path-status");
+          let clubPath = [];
+
           async function loadSwings() {
             const response = await fetch("/api/videos");
             const videos = await response.json();
             const list = document.getElementById("swing-list");
 
-             if (videos.length === 0) {
+            if (videos.length === 0) {
               list.innerHTML = "<li>No swings uploaded yet</li>";
               return;
             }
@@ -245,13 +260,54 @@ def videos_page() -> str:
                   li.classList.remove("selected");
                 });
                 item.classList.add("selected");
-                document.getElementById("player").src = "/api/videos/" + name;
+                player.src = "/api/videos/" + name;
+                loadPath(name);
               };
               list.appendChild(item);
             });
           }
 
+          async function loadPath(name) {
+            clubPath = [];
+            pathStatus.textContent = "";
+            const response = await fetch("/api/videos/" + name + "/path");
+            if (response.ok) {
+              clubPath = await response.json();
+            } else {
+              pathStatus.textContent = "Club path not ready yet";
+            }
+          }
+
+          function drawPath() {
+            // Make the canvas the same size as the video on screen (this also clears it)
+            canvas.width = player.clientWidth;
+            canvas.height = player.clientHeight;
+
+            if (player.videoWidth > 0) {
+              const ctx = canvas.getContext("2d");
+              // The path is in video pixels, so scale it to the size on screen
+              const scale = canvas.width / player.videoWidth;
+
+              ctx.strokeStyle = "#c4f25a";
+              ctx.lineWidth = 3;
+              ctx.beginPath();
+
+              for (const point of clubPath) {
+                // Only draw the points up to where the video is now
+                if (point.time > player.currentTime) {
+                  break;
+                }
+                ctx.lineTo(point.x * scale, point.y * scale);
+              }
+
+              ctx.stroke();
+            }
+
+            requestAnimationFrame(drawPath);
+          }
+
           loadSwings();
+          requestAnimationFrame(drawPath);
         </script>
       </body>
     </html>
