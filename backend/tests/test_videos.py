@@ -82,3 +82,4 @@ def test_videos_page_shows_list():
 
     assert response.status_code == 200
     assert "Swing Videos" in response.text
+    assert "path-canvas" in response.text

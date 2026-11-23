@@ -234,3 +234,21 @@ plan as they change often.
 ### Next
 
 - 7.3 - Draw the club path over the video on the results page.
+
+## 23 November 2026
+
+### What I did
+
+- 7.3 - The results page now draws the club path over the down-the-line video. The line grows with the club as the video plays, and goes back if I pause and drag the video back.
+- Put a canvas on top of the video to draw on. The path is in the video's real pixels, so it gets scaled down to the size the video is shown at.
+- Only the points up to the video's current time are drawn, using the time saved for each frame in 7.1. This keeps the line in time with the club even though the frame rate isn't fixed.
+- Shows "Club path not ready yet" for swings that don't have a path.
+- Tested it on IMG_9124 and the line follows the club through the whole swing.
+
+### Problems
+
+- The canvas wasn't lined up at first because it was outside the box with the video, and the old CSS stretched the video box wider than the video. Put them in the same box and removed the old width.
+
+### Next
+
+- 7.4 - Find the paths for my other swings, test the whole thing from the phone, and add how to run it to the README.
