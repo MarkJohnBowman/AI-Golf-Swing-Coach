@@ -66,3 +66,5 @@ To investigate whether a Kinect camera, a slow-motion phone camera and an AI coa
 - **13 Nov 2026** - Added Epic 6 to train the club head model on my own swings, because the first model missed the fast part of the backswing.
 
 - **20 Nov 2026** - Added Epic 7 to show the club path in the web app for the December showcase, while waiting for the Kinect adapter.
+
+- **24 Nov 2026** - Added Epic 8 to find the swing phases and tempo from the club path, so work can carry on without the Kinect adapter.
