@@ -252,3 +252,19 @@ plan as they change often.
 ### Next
 
 - 7.4 - Find the paths for my other swings, test the whole thing from the phone, and add how to run it to the README.
+
+## 24 November 2026
+
+### What I did
+
+- 7.4 - Made a script that finds the club path for every swing that was already uploaded, using the same function as the upload.
+- It took about 2 minutes per swing on my laptop, because YOLO runs on the processor and checks about 500 frames per swing.
+- Moved the swings filmed with the old camera setup out of the app, because the club path doesn't work well on them. Kept them for the research results.
+- Tested the whole thing from the phone. Uploaded a swing, and a couple of minutes later the club path showed on the laptop without me running anything.
+
+### Next
+
+- Epic 8 - Find the swing phases (address, top and impact) and the tempo from the club path.
+- Start the drill library for the AI coach on days I'm not coding.
+- Kinect capture (Epic 2) when the adapter arrives.
+- Finding the club path could be made faster later, for example by only checking the frames during the swing.
