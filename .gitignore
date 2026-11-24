@@ -29,6 +29,7 @@ club_positions*.csv
 # Recordings and videos
 recordings/
 uploads/
+old-swings/
 *.mp4
 *.mov
 
