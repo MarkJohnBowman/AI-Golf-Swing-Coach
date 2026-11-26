@@ -100,7 +100,8 @@ over the top.
 - Damien thought the top of the
 backswing would be better found
 from the Kinect
-- Test a left-handed club and a driver. 
+- Test a left-handed club and a
+driver. 
 
 ### Agreed Goal
 
