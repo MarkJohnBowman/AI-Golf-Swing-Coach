@@ -72,3 +72,39 @@
 ### Agreed Goal
 
 - Still waiting on the Kinect adapter, so club tracking with OpenCV this week.
+
+## 25 November 2026 - Club Tracking and Web App
+
+### Progress Shown
+
+- OpenCV trackers tested on the
+club head. All six lost it
+during the backswing.
+- YOLO model trained on a
+Roboflow Universe dataset, then
+retrained with my own swings.
+Club head found in 97% of frames on a swing it hadn't seen.
+- Club path drawn automatically on the results page after a
+swing is uploaded from the phone.
+- Tests running in CI.
+- Kinect adapter still hadn't
+arrived (it was in the kitchen
+when I got home).
+
+### Feedback
+
+- Asked what information could
+be taken from the club path. I
+said whether the swing comes
+over the top.
+- Damien thought the top of the
+backswing would be better found
+from the Kinect
+- Test a left-handed club and a
+driver.
+
+### Agreed Goal
+
+- Colour the backswing and downswing differently on the
+club path.
+- Epic 8 planned around measuring over the top.
