@@ -67,4 +67,4 @@ To investigate whether a Kinect camera, a slow-motion phone camera and an AI coa
 
 - **20 Nov 2026** - Added Epic 7 to show the club path in the web app for the December showcase, while waiting for the Kinect adapter.
 
-- **24 Nov 2026** - Added Epic 8 to find the swing phases and tempo from the club path, so work can carry on without the Kinect adapter.
+- **24 Nov 2026** - Added Epic 8 to find whether the downswing comes over the top using the club path, so work can carry on without the Kinect. Changed from swing phases and tempo after talking to Damien.
