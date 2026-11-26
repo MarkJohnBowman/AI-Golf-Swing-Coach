@@ -328,3 +328,16 @@ IMG_9124 was recorded in the same place and on the same day as the training swin
 ### Colouring the Backswing and Downswing - 26 November 2026
 
 The colour changes at the club head's highest point. But the club keeps going after that, dropping behind the body, so the colour changes a little too early. It's still good enough to see whether the downswing comes over the top. Once the Kinect and phone videos are synced, the true top of the backswing can come from the Kinect.
+
+### Measuring Over the Top - 26 November 2026
+
+Compared each point in the first half of the downswing with the backswing point at the same height, and averaged the sideways gap as a percentage of the swing height. Positive means the downswing is above the backswing (over the top), negative means below (shallow, like most pros).
+
+- **IMG_9120** - +21.7 (not right, see below)
+- **IMG_9121** - 0.0 (downswing on the same line as the backswing)
+- **IMG_9123** - +3.3
+- **IMG_9124** - +2.3
+
+On IMG_9120 the club head goes off the left side of the screen at the top of the backswing, so the path never reaches the real top. The highest point found is where it left the screen, partway up the backswing, so the backswing and downswing are split in the wrong place and the number isn't right. This is the same problem as the 24 frames that couldn't be labelled on this swing. Filming with more space to the left of the golfer would help, and the Kinect can give the top of the backswing from the hands, so this should be fixed once the videos are synced.
+
+IMG_9120 and IMG_9121 were used to train the model, so IMG_9123 and IMG_9124 are the fairer tests.
