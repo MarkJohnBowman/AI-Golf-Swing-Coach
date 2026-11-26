@@ -324,3 +324,7 @@ Ran both models on IMG_9124.mov, a swing neither model was trained on (conf 0.1)
 Adding frames from my own swings fixed most of the gaps, including the first half of the backswing. The club path is now drawn through the whole swing.
 
 IMG_9124 was recorded in the same place and on the same day as the training swings, so this is an easy test. The model still needs to be tested on swings from a different day and place.
+
+### Colouring the Backswing and Downswing - 26 November 2026
+
+The colour changes at the club head's highest point. But the club keeps going after that, dropping behind the body, so the colour changes a little too early. It's still good enough to see whether the downswing comes over the top. Once the Kinect and phone videos are synced, the true top of the backswing can come from the Kinect.

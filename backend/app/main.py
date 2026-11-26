@@ -241,6 +241,7 @@ def videos_page() -> str:
           const canvas = document.getElementById("path-canvas");
           const pathStatus = document.getElementById("path-status");
           let clubPath = [];
+          let topIndex = 0;
 
           async function loadSwings() {
             const response = await fetch("/api/videos");
@@ -273,9 +274,36 @@ def videos_page() -> str:
             const response = await fetch("/api/videos/" + name + "/path");
             if (response.ok) {
               clubPath = await response.json();
+              topIndex = findTop(clubPath);
             } else {
               pathStatus.textContent = "Club path not ready yet";
             }
+          }
+
+          function findTop(path) {
+            // The top of the backswing is where the club head is highest.
+            // y counts down from the top of the video, so the highest point has the smallest y.
+            let top = 0;
+            for (let i = 0; i < path.length; i++) {
+              if (path[i].y < path[top].y) {
+                top = i;
+              }
+            }
+            return top;
+          }
+
+          function drawLine(ctx, scale, start, end, colour) {
+            ctx.strokeStyle = colour;
+            ctx.beginPath();
+            for (let i = start; i <= end && i < clubPath.length; i++) {
+              const point = clubPath[i];
+              // Only draw the points up to where the video is now
+              if (point.time > player.currentTime) {
+                break;
+              }
+              ctx.lineTo(point.x * scale, point.y * scale);
+            }
+            ctx.stroke();
           }
 
           function drawPath() {
@@ -288,19 +316,11 @@ def videos_page() -> str:
               // The path is in video pixels, so scale it to the size on screen
               const scale = canvas.width / player.videoWidth;
 
-              ctx.strokeStyle = "#c4f25a";
               ctx.lineWidth = 3;
-              ctx.beginPath();
-
-              for (const point of clubPath) {
-                // Only draw the points up to where the video is now
-                if (point.time > player.currentTime) {
-                  break;
-                }
-                ctx.lineTo(point.x * scale, point.y * scale);
-              }
-
-              ctx.stroke();
+              // Backswing in blue, from the start to the top
+              drawLine(ctx, scale, 0, topIndex, "#5ab4f2");
+              // Downswing in green, from the top to the end
+              drawLine(ctx, scale, topIndex, clubPath.length - 1, "#c4f25a");
             }
 
             requestAnimationFrame(drawPath);
