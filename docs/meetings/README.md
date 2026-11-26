@@ -101,7 +101,7 @@ over the top.
 backswing would be better found
 from the Kinect
 - Test a left-handed club and a
-driver. 
+driver.
 
 ### Agreed Goal
 
