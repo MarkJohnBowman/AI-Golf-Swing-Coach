@@ -6,6 +6,7 @@ from fastapi import BackgroundTasks, FastAPI, HTTPException, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse
 
 from app.club_path import MODEL_PATH, find_club_path
+from app.over_the_top import downswing_gap, swing_result
 
 app = FastAPI(title="AI Golf Swing Coach")
 
@@ -99,6 +100,17 @@ def get_club_path(filename: str) -> list[dict]:
     if not json_path.is_file():
         raise HTTPException(status_code=404, detail="Club path not ready yet")
     return json.loads(json_path.read_text())
+
+
+@app.get("/api/videos/{filename}/over-the-top")
+def get_over_the_top(filename: str) -> dict:
+    """Send whether one swing comes over the top, using its saved club path."""
+    json_path = (UPLOAD_DIR / Path(filename).name).with_suffix(".json")
+    if not json_path.is_file():
+        raise HTTPException(status_code=404, detail="Club path not ready yet")
+    path = json.loads(json_path.read_text())
+    gap = downswing_gap(path)
+    return {"gap": gap, "result": swing_result(gap)}
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -203,6 +215,7 @@ def videos_page() -> str:
           }
           #player { height: 100%; display: block; }
           #path-canvas { position: absolute; top: 0; left: 0; pointer-events: none; }
+          #swing-result { font-size: 18px; color: #c4f25a; margin-top: 12px; }
         </style>
       </head>
       <body>
@@ -232,6 +245,7 @@ def videos_page() -> str:
                 </div>
               </div>
               <p id="path-status"></p>
+              <p id="swing-result"></p>
             </div>
           </section>
         </main>
@@ -240,6 +254,7 @@ def videos_page() -> str:
           const player = document.getElementById("player");
           const canvas = document.getElementById("path-canvas");
           const pathStatus = document.getElementById("path-status");
+          const swingResult = document.getElementById("swing-result");
           let clubPath = [];
           let topIndex = 0;
 
@@ -263,6 +278,7 @@ def videos_page() -> str:
                 item.classList.add("selected");
                 player.src = "/api/videos/" + name;
                 loadPath(name);
+                loadResult(name);
               };
               list.appendChild(item);
             });
@@ -278,6 +294,26 @@ def videos_page() -> str:
             } else {
               pathStatus.textContent = "Club path not ready yet";
             }
+          }
+
+         async function loadResult(name) {
+            swingResult.textContent = "";
+            const response = await fetch("/api/videos/" + name + "/over-the-top");
+            if (!response.ok) {
+              return;
+            }
+            const data = await response.json();
+            if (data.gap === null) {
+              swingResult.textContent = data.result;
+              return;
+            }
+            // Positive means above the backswing, negative means below
+            let direction = "above";
+            if (data.gap < 0) {
+              direction = "below";
+            }
+            swingResult.textContent =
+              data.result + " (" + Math.abs(data.gap) + "% " + direction + " the backswing)";
           }
 
           function findTop(path) {

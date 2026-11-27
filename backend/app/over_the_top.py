@@ -46,3 +46,18 @@ def downswing_gap(path: list[dict]) -> float | None:
 
     average_gap = sum(gaps) / len(gaps)
     return round(average_gap / swing_height * 100, 1)
+
+# Starting cut-off points from the research (8.3)
+SHALLOW_BELOW = -5
+OVER_THE_TOP_ABOVE = 5
+
+
+def swing_result(gap: float | None) -> str:
+    """Sort a swing into shallow, neutral or over the top."""
+    if gap is None:
+        return "Not enough of the swing to measure"
+    if gap > OVER_THE_TOP_ABOVE:
+        return "Over the top"
+    if gap < SHALLOW_BELOW:
+        return "Shallow"
+    return "Neutral"

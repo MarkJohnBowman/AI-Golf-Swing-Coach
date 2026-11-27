@@ -1,4 +1,4 @@
-from app.over_the_top import downswing_gap, find_top
+from app.over_the_top import downswing_gap, find_top, swing_result
 
 
 def test_find_top_is_highest_point():
@@ -47,3 +47,10 @@ def test_left_handed_swing_is_mirrored():
 
 def test_too_short_path_gives_none():
     assert downswing_gap([{"x": 0, "y": 0}]) is None
+    
+
+def test_swing_result_categories():
+    assert swing_result(12) == "Over the top"
+    assert swing_result(0) == "Neutral"
+    assert swing_result(-8) == "Shallow"
+    assert swing_result(None) == "Not enough of the swing to measure"
