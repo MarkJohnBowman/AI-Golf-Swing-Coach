@@ -360,7 +360,7 @@ Starting cut-off points, based on my own swings:
 
 My three normal swings measured between 0 and +3.3, so the measurement wobbles by about 3%. The ±5 margin stops that being called a fault. These need checking on more swings and more golfers, ideally against a launch monitor.
 
-### References
+### References for Over the Top
 
 - [Trackman: 6 numbers all amateur golfers should know](https://trackman.com/blog/golf/six-trackman-numbers-every-amateur-golfer-should-know)
 - [GolfWRX: Analyzing golfers' favorite shots on Trackman](https://golfwrx.com/237117/analyzing-golfers-favorite-shots-on-trackman/)
