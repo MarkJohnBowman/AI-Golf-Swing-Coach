@@ -341,3 +341,28 @@ Compared each point in the first half of the downswing with the backswing point 
 On IMG_9120 the club head goes off the left side of the screen at the top of the backswing, so the path never reaches the real top. The highest point found is where it left the screen, partway up the backswing, so the backswing and downswing are split in the wrong place and the number isn't right. This is the same problem as the 24 frames that couldn't be labelled on this swing. Filming with more space to the left of the golfer would help, and the Kinect can give the top of the backswing from the hands, so this should be fixed once the videos are synced.
 
 IMG_9120 and IMG_9121 were used to train the model, so IMG_9123 and IMG_9124 are the fairer tests.
+
+### Cut-off Points for Over the Top - 27 November 2026
+
+No published cut-off points were found in the same units as my measurement. Launch monitors like TrackMan measure club path at impact in degrees, from above. A negative club path means out-to-in, which is linked to a slice. My measurement is the shape of the downswing compared with the backswing, from behind, so the two can't be converted.
+
+The sources do agree on the direction:
+
+- Pros shallow the club, so their downswing comes down below the backswing
+- Most amateurs come over the top with an out-to-in path
+- The path alone can't say if a shot will slice. The clubface has a bigger effect on where the ball starts
+
+Starting cut-off points, based on my own swings:
+
+- **Below -5%** - shallow
+- **-5% to +5%** - neutral
+- **Above +5%** - over the top
+
+My three normal swings measured between 0 and +3.3, so the measurement wobbles by about 3%. The ±5 margin stops that being called a fault. These need checking on more swings and more golfers, ideally against a launch monitor.
+
+### References
+
+- [Trackman: 6 numbers all amateur golfers should know](https://trackman.com/blog/golf/six-trackman-numbers-every-amateur-golfer-should-know)
+- [GolfWRX: Analyzing golfers' favorite shots on Trackman](https://golfwrx.com/237117/analyzing-golfers-favorite-shots-on-trackman/)
+- [GolfWRX: By the numbers, how to hit a draw](https://golfwrx.com/228417/by-the-numbers-how-to-hit-a-draw/)
+- [Titleist: Physics of ball striking](https://www.titleist.com/learning-lab/performance/physics-of-ball-striking-in-golf)
