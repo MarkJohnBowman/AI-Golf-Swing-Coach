@@ -366,3 +366,14 @@ My three normal swings measured between 0 and +3.3, so the measurement wobbles b
 - [GolfWRX: Analyzing golfers' favorite shots on Trackman](https://golfwrx.com/237117/analyzing-golfers-favorite-shots-on-trackman/)
 - [GolfWRX: By the numbers, how to hit a draw](https://golfwrx.com/228417/by-the-numbers-how-to-hit-a-draw/)
 - [Titleist: Physics of ball striking](https://www.titleist.com/learning-lab/performance/physics-of-ball-striking-in-golf)
+
+### Checking the Results - 28 November 2026
+
+Checked each swing on the results page by comparing the result under the video with the coloured club path.
+
+- **IMG_9121** - Neutral (0.0%). The green downswing comes down on the blue backswing.
+- **IMG_9123** - Neutral (3.3% above). The green comes down close to the blue.
+- **IMG_9124** - Neutral (2.3% above). The green comes down close to the blue.
+- **IMG_9120** - Over the top (21.7% above), but this is wrong because the club goes off the left of the screen at the top.
+
+When the top of the backswing is in shot, the result matches what can be seen on the video. None of my swings came over the top, so the over the top result hasn't been seen on a real swing yet. A swing that does come over the top is needed to check that part.
